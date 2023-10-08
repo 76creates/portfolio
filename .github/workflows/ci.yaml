@@ -20,9 +20,13 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GHRC_REPO_TOKEN }}
 
+      - id: gen_sha
+        name: Generate short SHA
+        run: echo "shortSha=${GITHUB_SHA:0:7}" >> "$GITHUB_OUTPUT"
+
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
           context: ./dusan.work/
           push: true
-          tags: "ghcr.io/${{ github.repository }}/portfolio:latest,ghcr.io/${{ github.repository }}/portfolio:${GITHUB_SHA:0:7}"
+          tags: "ghcr.io/${{ github.repository }}/portfolio:latest,ghcr.io/${{ github.repository }}/portfolio:${{ steps.gen_sha.outputs.shortSha }}"
