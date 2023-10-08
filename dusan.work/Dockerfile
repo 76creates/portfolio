@@ -5,7 +5,7 @@ COPY . .
 
 RUN golangci-lint run -v
 
-FROM golang:1.20.1 AS builder
+FROM golang:1.21.2 AS builder
 COPY --from=lint /app /usr/src/app
 
 WORKDIR /usr/src/app

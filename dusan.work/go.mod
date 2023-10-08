@@ -1,6 +1,6 @@
 module github.com/76creates/portfolio/dsn.onl
 
-go 1.20
+go 1.21
 
 require (
 	github.com/gofiber/fiber/v2 v2.41.0
